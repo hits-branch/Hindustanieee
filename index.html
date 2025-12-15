@@ -81,6 +81,66 @@
             color: var(--hits-gold) !important;
         }
 
+        /* --- FLOATING UPCOMING EVENT BUTTON --- */
+        .floating-upcoming-btn {
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--hits-blue), #003366);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            box-shadow: 0 5px 20px rgba(0, 33, 71, 0.4);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            transform: translateX(0);
+            opacity: 0.95;
+            animation: pulse 2s infinite;
+        }
+        
+        .floating-upcoming-btn:hover {
+            transform: translateX(-5px);
+            background: linear-gradient(135deg, var(--hits-gold), #ffb300);
+            color: var(--hits-blue);
+            opacity: 1;
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+        }
+        
+        .floating-upcoming-btn i {
+            font-size: 16px;
+        }
+        
+        .floating-upcoming-btn .badge {
+            background-color: var(--hits-gold);
+            color: var(--hits-blue);
+            font-size: 10px;
+            padding: 3px 8px;
+            margin-left: 5px;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 5px 20px rgba(0, 33, 71, 0.4); }
+            50% { box-shadow: 0 5px 25px rgba(255, 193, 7, 0.5); }
+            100% { box-shadow: 0 5px 20px rgba(0, 33, 71, 0.4); }
+        }
+        
+        @media (max-width: 768px) {
+            .floating-upcoming-btn {
+                top: auto;
+                bottom: 80px;
+                right: 15px;
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+        }
+
         /* --- HERO SECTION --- */
         .hero-section {
             position: relative;
@@ -367,6 +427,13 @@
     </style>
 </head>
 <body>
+
+    <!-- Floating Upcoming Event Button -->
+    <button class="floating-upcoming-btn" onclick="scrollToUpcoming()">
+        <i class="fas fa-calendar-alt"></i>
+        Upcoming Event
+        <span class="badge rounded-pill">NEW</span>
+    </button>
 
     <button type="button" id="btn-back-to-top">
         <i class="fas fa-arrow-up"></i>
@@ -1231,6 +1298,55 @@
                     </div>
                 </div>
 
+                <!-- FIXED: Robotics & Automation Society Inauguration with proper carousel -->
+                <div class="event-card fade-in-up">
+                    <div class="row g-0">
+                         <div class="col-lg-6 order-lg-1 bg-light">
+                            <div id="carouselRAS" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselRAS" data-bs-slide-to="0" class="active"></button>
+                                    <button type="button" data-bs-target="#carouselRAS" data-bs-slide-to="1"></button>
+                                    <button type="button" data-bs-target="#carouselRAS" data-bs-slide-to="2"></button>
+                                    <button type="button" data-bs-target="#carouselRAS" data-bs-slide-to="3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="robot1.jpeg" class="d-block w-100" alt="RAS Inauguration">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="robot2.jpeg" class="d-block w-100" alt="RAS Inauguration">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="robot3.jpeg" class="d-block w-100" alt="RAS Inauguration">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="robot4.jpeg" class="d-block w-100" alt="RAS Inauguration">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselRAS" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselRAS" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-2 p-5 d-flex flex-column justify-content-center">
+                            <div><span class="badge bg-primary rounded-pill mb-2">Milestone | Dec 2025</span></div>
+                            <h3 class="fw-bold mb-3">Robotics & Automation Society Inauguration</h3>
+                            <p class="text-muted mb-4">
+                                Grand inauguration of the IEEE Robotics & Automation Society Student Chapter.
+                            </p>
+                            <ul class="list-unstyled text-sm text-secondary">
+                                <li><i class="far fa-calendar-alt me-2"></i> <strong>12th December 2025</strong></li>
+                                <li><i class="far fa-clock me-2"></i> 9:30 AM</li>
+                                <li><i class="fas fa-map-marker-alt me-2"></i> K S Moorthy Hall</li>
+                                <li><i class="far fa-star me-2"></i> <strong>Chief Guest:</strong> Dr. N. Nithyavathy (Chair - IEEE Madras RAS)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1247,20 +1363,23 @@
                     <div class="row g-0">
                         <div class="col-lg-5">
                             <div class="upcoming-image-container">
-                                <img src="upcoming event.jpeg" alt="Robotics Event">
+                                <!-- Replace with your new event image from the provided file -->
+                                <img src="upcoming2.jpeg" alt="IEEE Power and Energy Society Reinstallation and Expert Lecture">
                             </div>
                         </div>
                         <div class="col-lg-7 p-5 d-flex flex-column justify-content-center">
                             <div><span class="badge bg-warning text-dark rounded-pill mb-2">Upcoming | Dec 2025</span></div>
-                            <h3 class="fw-bold mb-3">Robotics & Automation Society Inauguration</h3>
+                            <h3 class="fw-bold mb-3">IEEE Reinstallation of Power and Energy Society and Expert Lecture on Energy Conservation and Energy Efficiency</h3>
                             <p class="text-muted mb-4">
-                                Grand inauguration of the IEEE Robotics & Automation Society Student Chapter.
+                                IEEE Reinstallation of Power and Energy Society along with an expert lecture focusing on Energy Conservation and Energy Efficiency.
                             </p>
                             <ul class="list-unstyled text-sm text-secondary">
-                                <li><i class="far fa-calendar-alt me-2"></i> <strong>12th December 2025</strong></li>
-                                <li><i class="far fa-clock me-2"></i> 9:30 AM</li>
-                                <li><i class="fas fa-map-marker-alt me-2"></i> K S Moorthy Hall</li>
-                                <li><i class="far fa-star me-2"></i> <strong>Chief Guest:</strong> Dr. N. Nithyavathy (Chair - IEEE Madras RAS)</li>
+                                <li><i class="far fa-calendar-alt me-2"></i> <strong>17th December 2025</strong></li>
+                                <li><i class="far fa-clock me-2"></i> 10:30 AM</li>
+                                <li><i class="fas fa-map-marker-alt me-2"></i> Padur Hall</li>
+                                <li><i class="far fa-user me-2"></i> <strong>Keynote Speaker:</strong> Er. RAMADOSS, Executive Engineer (Commercial, R & D), Tamil Nadu Electricity Board (TNEB)</li>
+                                <li><i class="fas fa-university me-2"></i> <strong>Organized by:</strong> School of Engineering & Technology, Department of Electrical and Electronics Engineering</li>
+                                <li><i class="fas fa-handshake me-2"></i> <strong>In Association with:</strong> IEEE-Madras Section</li>
                             </ul>
                         </div>
                     </div>
@@ -1354,6 +1473,11 @@
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         });
+
+        // --- 4. FLOATING UPCOMING EVENT BUTTON FUNCTION ---
+        function scrollToUpcoming() {
+            document.getElementById('upcoming').scrollIntoView({ behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
